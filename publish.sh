@@ -19,7 +19,11 @@ echo "== 2/4 一致性守卫（防「改了 txt 忘了重建」）=="
 
 echo "== 3/4 切 subtree =="
 git branch -D legal-site-publish 2>/dev/null || true
-git subtree split --prefix legal-site -b legal-site-publish >/dev/null
+# git subtree 会把进度条打到 stderr，噪音很大；只在失败时才让它露出来。
+if ! git subtree split --prefix legal-site -b legal-site-publish >/dev/null 2>/tmp/legal-subtree.err; then
+  cat /tmp/legal-subtree.err
+  exit 1
+fi
 
 echo "== 4/4 推送 =="
 REMOTE="https://github.com/Lawsonliang/habitcub-legal.git"
