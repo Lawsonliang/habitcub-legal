@@ -49,7 +49,7 @@ diff <(curl -s https://lawsonliang.github.io/habitcub-legal/privacy.html) legal-
 - App Store Connect → App 信息 → 许可证协议：**留空＝Apple 标准 EULA**（或填 https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ ）
 - App 内会员页的披露区：隐私政策 + 订阅条款两个链接（对应 EN_RELEASE §5.1，尚未实现）
 
-## 已知待决
+## 口径已统一（2026-11-25）
 
-隐私政策正文写的是「for iPhone and iPad」，而 v1 决策（EN_RELEASE D5）是不上 iPad。
-两者需要统一：改文案（只上 iPhone）或补 iPad 截图与布局验证（上 iPad）。
+隐私政策正文已改为「for iPhone」，与 v1「仅 iPhone」的决策（EN_RELEASE D5）一致；
+`TARGETED_DEVICE_FAMILY` 也已改为 `1` 并有守卫测试。将来若要上 iPad，两处要一起改。
